@@ -78,6 +78,185 @@ button {
     color: white;
     border-radius: 5px;
 }
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #131921; /* Adjust as needed */
+}
+
+.logo-img {
+    width: auto; /* Maintain aspect ratio */
+    height: 50px; /* Adjust size */
+    max-width: 100%; /* Ensure responsiveness */
+}
+
+.logo-img {
+    width: 200px;
+    height: 50px;
+    object-fit: contain; /* Prevents distortion */
+}
+
+.navbar {
+    height: 60px; /* Adjust as needed */
+    overflow: visible;
+}
+
+
+/* Amazon Search Bar */
+.amazon-search {
+    display: flex;
+    align-items: center;
+    width: 700px;
+    background: white;
+    border: 2px solid #f3a847;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Dropdown Container */
+.amazon-dropdown {
+    background: #e6e6e6;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #f3a847;
+}
+
+/* Category Select Dropdown */
+.amazon-category {
+    height: 36px;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 14px;
+    padding-left: 8px;
+    cursor: pointer;
+}
+
+/* Search Input */
+.amazon-input {
+    flex: 1;
+    height: 36px;
+    border: none;
+    padding: 10px;
+    outline: none;
+    font-size: 14px;
+}
+
+/* Search Button */
+.amazon-btn {
+    height: 46px;
+    width: 45px;
+    border: none;
+    background: #f3a847;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Search Icon */
+.amazon-btn i {
+    font-size: 16px;
+    color: #333;
+}
+
+
+/* Amazon Search Bar */
+.amazon-search {
+    border: 2px solid #f3a847;
+    border-radius: 6px;
+    overflow: hidden;
+    background: white;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    flex-wrap: wrap; /* Allow wrapping of elements on smaller screens */
+}
+
+/* Category Dropdown */
+.amazon-dropdown .amazon-category {
+    width: 100%; /* Full width on smaller devices */
+    height: 36px;
+    border: none;
+    background: #e6e6e6;
+    font-size: 13px;
+    cursor: pointer;
+    border-right: 1px solid #f3a847;
+    padding: 0;
+}
+
+/* Search Input */
+.amazon-input {
+    flex: 1;
+    height: 36px;
+    border: none;
+    padding: 0;
+    outline: none;
+    font-size: 13px;
+}
+
+/* Search Button */
+.amazon-btn {
+    height: 36px;
+    width: 45px;
+    border: none;
+    background: #f3a847;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+/* Search Icon */
+.amazon-btn i {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Responsive design adjustments */
+
+/* Large devices */
+@media (min-width: 992px) {
+    .amazon-search {
+        flex-direction: row;
+    }
+
+    .amazon-dropdown, .amazon-input, .amazon-btn {
+        width: auto; /* Reset to auto width for large screens */
+    }
+}
+
+/* Medium devices */
+@media (max-width: 991px) and (min-width: 768px) {
+    .amazon-search {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .amazon-dropdown, .amazon-input, .amazon-btn {
+        width: 30%; /* Reduced width on medium screens */
+        margin-bottom: 5px;
+    }
+}
+
+/* Small devices (up to 767px) */
+@media (max-width: 767px) {
+    .amazon-search {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: stretch;  /* Stretch elements to fill container */
+    }
+
+    .amazon-dropdown, .amazon-input, .amazon-btn {
+        width: 100%; /* Ensure each element takes full width */
+        margin-bottom: 10px; /* Add spacing between elements */
+    }
+}
+
+
+
 
 
 .card-container{
