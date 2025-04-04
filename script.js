@@ -307,3 +307,55 @@ function updateDealCountdown() {
 
 
 
+// --------------------------Games setion---------------------------
+
+  // JavaScript for countdown timer and interactive elements
+  document.addEventListener('DOMContentLoaded', function() {
+    // Countdown timer
+    function updateCountdown() {
+        // Set the end date for the sale (3 days from now)
+        const endDate = new Date();
+        endDate.setDate(endDate.getDate() + 3);
+        
+        const now = new Date();
+        const diff = endDate - now;
+        
+        if (diff <= 0) {
+            document.getElementById('countdown').textContent = "Sale has ended!";
+            return;
+        }
+        
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        document.getElementById('countdown').textContent = 
+            `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+    
+    // Update countdown every second
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+    
+    // Add hover effects to game cards
+    const gameCards = document.querySelectorAll('.game-card');
+    gameCards.forEach(card => {
+        card.addEventListener('click', function() {
+            // In a real implementation, this would navigate to the product page
+            console.log('Navigating to product page for: ', 
+                      this.querySelector('.game-title').textContent);
+        });
+    });
+    
+    // View all link
+    document.querySelector('.view-all').addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('View all spring gaming deals clicked');
+        // In a real implementation, this would show all deals
+    });
+});
+
+
+
+
