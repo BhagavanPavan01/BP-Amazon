@@ -479,3 +479,28 @@ document.addEventListener('DOMContentLoaded', function() {
 function toggleMenu() {
     document.querySelector(".nav-menu").classList.toggle("active");
 }
+
+
+
+// ---------------------------- Footer Section-------------------------
+
+
+
+// Simple script for the back to top button
+document.querySelector('.amz-footer-back-to-top').addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// Add animation to footer links
+document.querySelectorAll('.amz-footer-column a').forEach(link => {
+    link.addEventListener('mouseover', function() {
+        this.style.color = '#FF9900';
+        this.style.transition = 'color 0.2s';
+    });
+    link.addEventListener('mouseout', function() {
+        this.style.color = '#DDD';
+    });
+});
