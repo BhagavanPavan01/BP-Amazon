@@ -359,3 +359,123 @@ function updateDealCountdown() {
 
 
 
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Unique JS variable names
+    const amzUniqTrack = document.getElementById('amzUniqTrack');
+    const amzUniqPrevBtn = document.getElementById('amzUniqPrev');
+    const amzUniqNextBtn = document.getElementById('amzUniqNext');
+    
+    // Clone cards for infinite effect
+    const amzUniqCards = amzUniqTrack.querySelectorAll('.amz-uniq-card');
+    const amzUniqTotalCards = amzUniqCards.length;
+    
+    for (let i = 0; i < amzUniqTotalCards; i++) {
+        const clone = amzUniqCards[i].cloneNode(true);
+        amzUniqTrack.appendChild(clone);
+    }
+    
+    // Manual navigation variables
+    let amzUniqIsDragging = false;
+    let amzUniqStartPos = 0;
+    let amzUniqCurrentTranslate = 0;
+    let amzUniqPrevTranslate = 0;
+    let amzUniqAnimationID;
+    let amzUniqCurrentIndex = 0;
+    
+    // Touch events
+    amzUniqCards.forEach(card => {
+        card.addEventListener('touchstart', amzUniqTouchStart);
+        card.addEventListener('touchend', amzUniqTouchEnd);
+        card.addEventListener('touchmove', amzUniqTouchMove);
+        
+        card.addEventListener('click', function(e) {
+            if (!amzUniqIsDragging) {
+                console.log('Product clicked:', this.querySelector('.amz-uniq-name').textContent);
+            }
+        });
+    });
+    
+    // Mouse events
+    amzUniqTrack.addEventListener('mousedown', amzUniqTouchStart);
+    amzUniqTrack.addEventListener('mouseup', amzUniqTouchEnd);
+    amzUniqTrack.addEventListener('mouseleave', amzUniqTouchEnd);
+    amzUniqTrack.addEventListener('mousemove', amzUniqTouchMove);
+    
+    // Button navigation
+    amzUniqNextBtn.addEventListener('click', () => {
+        amzUniqCurrentIndex = (amzUniqCurrentIndex + 1) % amzUniqTotalCards;
+        amzUniqSlideToIndex(amzUniqCurrentIndex);
+    });
+    
+    amzUniqPrevBtn.addEventListener('click', () => {
+        amzUniqCurrentIndex = (amzUniqCurrentIndex - 1 + amzUniqTotalCards) % amzUniqTotalCards;
+        amzUniqSlideToIndex(amzUniqCurrentIndex);
+    });
+    
+    function amzUniqTouchStart(e) {
+        if (e.type === 'touchstart') {
+            amzUniqStartPos = e.touches[0].clientX;
+        } else {
+            amzUniqStartPos = e.clientX;
+            e.preventDefault();
+        }
+        amzUniqIsDragging = true;
+        amzUniqAnimationID = requestAnimationFrame(amzUniqAnimation);
+        amzUniqTrack.style.cursor = 'grabbing';
+        amzUniqTrack.style.transition = 'none';
+    }
+    
+    function amzUniqTouchEnd() {
+        amzUniqIsDragging = false;
+        cancelAnimationFrame(amzUniqAnimationID);
+        amzUniqTrack.style.cursor = 'grab';
+        
+        const movedBy = amzUniqCurrentTranslate - amzUniqPrevTranslate;
+        
+        if (movedBy < -50) {
+            amzUniqCurrentIndex = (amzUniqCurrentIndex + 1) % amzUniqTotalCards;
+        } else if (movedBy > 50) {
+            amzUniqCurrentIndex = (amzUniqCurrentIndex - 1 + amzUniqTotalCards) % amzUniqTotalCards;
+        }
+        
+        amzUniqSlideToIndex(amzUniqCurrentIndex);
+    }
+    
+    function amzUniqTouchMove(e) {
+        if (amzUniqIsDragging) {
+            const currentPosition = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+            amzUniqCurrentTranslate = amzUniqPrevTranslate + currentPosition - amzUniqStartPos;
+        }
+    }
+    
+    function amzUniqAnimation() {
+        amzUniqSetSliderPosition();
+        if (amzUniqIsDragging) requestAnimationFrame(amzUniqAnimation);
+    }
+    
+    function amzUniqSetSliderPosition() {
+        amzUniqTrack.style.transform = `translateX(${amzUniqCurrentTranslate}px)`;
+    }
+    
+    function amzUniqSlideToIndex(index) {
+        amzUniqCurrentIndex = index;
+        amzUniqCurrentTranslate = -amzUniqCurrentIndex * 235;
+        amzUniqPrevTranslate = amzUniqCurrentTranslate;
+        amzUniqTrack.style.transition = 'transform 0.5s ease';
+        amzUniqTrack.style.transform = `translateX(${amzUniqCurrentTranslate}px)`;
+    }
+    
+    // View all link
+    document.querySelector('.amz-uniq-viewall').addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('View all clicked');
+    });
+});
+
+
+
+function toggleMenu() {
+    document.querySelector(".nav-menu").classList.toggle("active");
+}

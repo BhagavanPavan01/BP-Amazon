@@ -18,104 +18,64 @@
 </head>
 
 <body>
-    <nav class="navbar ">
+    <nav class="navbar">
         <div class="logo">
-            <img src="https://wallpapers.com/images/hd/amazon-logo-black-background-xb9pdemosnjfz9ej.jpg" alt="Amazon"
-                class="logo-img">
+            <img src="https://wallpapers.com/images/hd/amazon-logo-black-background-xb9pdemosnjfz9ej.jpg" alt="Amazon" class="logo-img">
         </div>
-
-        <!-- Delivery Location -->
-        <div class="nav-option account-dropdown">
-            <div>
+    
+        <!-- Mobile Menu Toggle -->
+        <button class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+    
+        <div class="nav-menu">
+            <!-- Delivery Location -->
+            <div class="nav-option account-dropdown">
                 <span class="nav-option-line1">Deliver to</span>
                 <span class="nav-option-line2"><i class="fas fa-map-marker-alt"></i> India</span>
             </div>
-            <div class="account-dropdown-content">
-                <h6>Choose your location</h6>
-                <p>Select a delivery location to see product availability and delivery options</p>
-                <button class="btn btn-warning btn-sm">Sign in to see your addresses</button>
-            </div>
-        </div>
-
-        <!-- Search Bar -->
-        <div class="amazon-search">
-            <div class="amazon-dropdown">
-                <select class="amazon-category form-select">
+    
+            <!-- Search Bar -->
+            <div class="amazon-search">
+                <select class="amazon-category">
                     <option value="all">All</option>
                     <option value="electronics">Electronics</option>
                     <option value="fashion">Fashion</option>
                     <option value="books">Books</option>
-                    <option value="home">Home & Kitchen</option>
-                    <option value="beauty">Beauty & Health</option>
                 </select>
+                <input type="text" class="amazon-input" placeholder="Search Amazon.in">
+                <button class="amazon-btn"><i class="fas fa-search"></i></button>
             </div>
-            <input type="text" class="amazon-input form-control" placeholder="Search Amazon.in">
-            <button class="amazon-btn btn">
-                <i class="fas fa-search"></i>
-            </button>
-        </div>
-
-        <!-- Right Side Options -->
-        <div class="nav-right">
-            <!-- Language Selector -->
-            <div class="nav-option">
-                <span class="nav-option-line1">EN</span>
-                <span class="nav-option-line2"><i class="fas fa-caret-down"></i></span>
-            </div>
-
-            <!-- Account & Lists -->
-            <div class="nav-option account-dropdown">
-                <div>
-                    <span class="nav-option-line1">Hello, Sign in</span>
-                    <span class="nav-option-line2">Account & Lists <i class="fas fa-caret-down"></i></span>
+    
+            <!-- Account & Orders -->
+            <div class="nav-right">
+                <div class="nav-option">EN <i class="fas fa-caret-down"></i></div>
+                <div class="nav-option">Hello, Sign in <i class="fas fa-caret-down"></i></div>
+                <div class="nav-option">Returns & Orders</div>
+                <div class="cart">
+                    <i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span>
                 </div>
-                <div class="account-dropdown-content">
-                    <div class="d-flex justify-content-between mb-3">
-                        <button class="btn btn-warning btn-sm">Sign in</button>
-                        <span>New customer? <a href="#">Start here</a></span>
-                    </div>
-                    <hr>
-                    <h6>Your Lists</h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Create a Wish List</a></li>
-                        <li><a href="#">Wish from Any Website</a></li>
-                        <li><a href="#">Baby Wishlist</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Returns & Orders -->
-            <div class="nav-option">
-                <div>
-                    <span class="nav-option-line1">Returns</span>
-                    <span class="nav-option-line2">& Orders</span>
-                </div>
-            </div>
-
-            <!-- Cart -->
-            <div class="cart">
-                <span class="cart-icon"><i class="fas fa-shopping-cart fa-lg"></i></span>
-                <span class="cart-count">0</span>
-                <span class="cart-text">Cart</span>
             </div>
         </div>
     </nav>
-
+    
     <!-- Secondary Navbar -->
-    <div class="secondary-nav" style="background-color: #232f3e; color: white; padding: 0.5rem 1rem;">
-        <div class="d-flex align-items-center flex-wrap">
-            <div class="nav-option me-3">
-                <i class="fas fa-bars me-1"></i>
-                <span>All</span>
-            </div>
-            <div class="nav-option me-3">Today's Deals</div>
-            <div class="nav-option me-3">Customer Service</div>
-            <div class="nav-option me-3">Registry</div>
-            <div class="nav-option me-3">Gift Cards</div>
-            <div class="nav-option me-3">Sell</div>
-        </div>
+    <div class="secondary-nav">
+        <div class="nav-option"><i class="fas fa-bars"></i> All</div>
+        <div class="nav-option">Today's Deals</div>
+        <div class="nav-option">Customer Service</div>
+        <div class="nav-option">Registry</div>
+        <div class="nav-option">Gift Cards</div>
+        <div class="nav-option">Sell</div>
+        <div class="nav-option">Electronics</div>
+        <div class="nav-option">Home & Kitchen</div>
+        <div class="nav-option">Fashion</div>
+        <div class="nav-option">Books</div>
+        <div class="nav-option">Toys & Games</div>
+        <div class="nav-option">Sports & Outdoors</div>
     </div>
-
+    
+    
 
     <!--    Banner section   -->
 
@@ -694,6 +654,74 @@
     </div>
 
 
+
+
+    <div class="amz-unique-container">
+        <div class="amz-uniq-header">
+            <h2 class="amz-uniq-title">Recommended For You</h2>
+            <a href="#" class="amz-uniq-viewall">See all items</a>
+        </div>
+        
+        <div class="amz-uniq-carousel-outer">
+            <div class="amz-uniq-carousel-inner">
+                <div class="amz-uniq-track" id="amzUniqTrack">
+                    <!-- Product cards -->
+                    <div class="amz-uniq-card">
+                        <img src="https://i.ytimg.com/vi/mp1M4Ut_vMA/maxresdefault.jpg" alt="Product" class="amz-uniq-img">
+                        <h3 class="amz-uniq-name">Echo Dot (5th Gen) | Smart speaker with Alexa</h3>
+                        <div class="amz-uniq-stars">★★★★☆ (24,567)</div>
+                        <div class="amz-uniq-price">$39.99</div>
+                        <span class="amz-uniq-prime">Prime</span>
+                    </div>
+                    
+                    <div class="amz-uniq-card">
+                        <img src="https://m.media-amazon.com/images/I/61L5QgPvgqL._AC_UL320_.jpg" alt="Product" class="amz-uniq-img">
+                        <h3 class="amz-uniq-name">Fire TV Stick 4K streaming device</h3>
+                        <div class="amz-uniq-stars">★★★★★ (89,123)</div>
+                        <div class="amz-uniq-price">$49.99</div>
+                        <span class="amz-uniq-prime">Prime</span>
+                    </div>
+                    
+                    <div class="amz-uniq-card">
+                        <img src="https://m.media-amazon.com/images/I/61CGHv6kmWL._AC_UL320_.jpg" alt="Product" class="amz-uniq-img">
+                        <h3 class="amz-uniq-name">Kindle Paperwhite (8 GB) – 6.8" display</h3>
+                        <div class="amz-uniq-stars">★★★★★ (32,456)</div>
+                        <div class="amz-uniq-price">$139.99</div>
+                        <span class="amz-uniq-prime">Prime</span>
+                    </div>
+                    
+                    <div class="amz-uniq-card">
+                        <img src="https://m.media-amazon.com/images/I/71S4sIPFvBL._AC_UL320_.jpg" alt="Product" class="amz-uniq-img">
+                        <h3 class="amz-uniq-name">Blink Mini – Smart security camera</h3>
+                        <div class="amz-uniq-stars">★★★★☆ (45,678)</div>
+                        <div class="amz-uniq-price">$29.99</div>
+                        <span class="amz-uniq-prime">Prime</span>
+                    </div>
+                    
+                    <div class="amz-uniq-card">
+                        <img src="https://www.totaldigitalstores.co.uk/cdn/shop/files/s-l1600_7_9bcd02c7-c0f9-44d1-a2f1-39e939a25dd5_600x.jpg?v=1700494449" alt="Product" class="amz-uniq-img">
+                        <h3 class="amz-uniq-name">Ring Video Doorbell – 1080p HD</h3>
+                        <div class="amz-uniq-stars">★★★★☆ (67,890)</div>
+                        <div class="amz-uniq-price">$59.99</div>
+                        <span class="amz-uniq-prime">Prime</span>
+                    </div>
+                    
+                    <div class="amz-uniq-card">
+                        <img src="https://assets.rebelmouse.io/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpbWFnZSI6Imh0dHBzOi8vYXNzZXRzLnJibC5tcy8yNDYzMjcwOS9vcmlnaW4uanBnIiwiZXhwaXJlc19hdCI6MTc2NDM3MTM1NX0.mMpnqXtncIfgZaNN8BMHGb13CkhnDfd8iEs5BSuH9F0/img.jpg?width=1200&height=800&quality=85&coordinates=0%2C34%2C0%2C35" alt="Product" class="amz-uniq-img">
+                        <h3 class="amz-uniq-name">Amazon Smart Plug, works with Alexa</h3>
+                        <div class="amz-uniq-stars">★★★★☆ (12,345)</div>
+                        <div class="amz-uniq-price">$24.99</div>
+                        <span class="amz-uniq-prime">Prime</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="amz-uniq-nav">
+                <button class="amz-uniq-btn" id="amzUniqPrev">❮</button>
+                <button class="amz-uniq-btn" id="amzUniqNext">❯</button>
+            </div>
+        </div>
+    </div>
 
 
 
