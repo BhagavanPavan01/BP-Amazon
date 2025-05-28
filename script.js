@@ -482,6 +482,43 @@ function toggleMenu() {
 
 
 
+// ------------------------------------recently-viewed------------------------------------
+
+
+// On product page load
+let viewedItems = JSON.parse(localStorage.getItem('viewedItems')) || [];
+const currentProduct = {
+  id: '123',
+  name: 'Product Name',
+  image: 'product.jpg',
+  price: '₹999'
+};
+
+// Add current product to viewed items
+viewedItems = viewedItems.filter(item => item.id !== currentProduct.id);
+viewedItems.unshift(currentProduct);
+if (viewedItems.length > 10) viewedItems.pop();
+localStorage.setItem('viewedItems', JSON.stringify(viewedItems));
+
+// On homepage load
+const carousel = document.querySelector('.product-carousel');
+viewedItems.forEach(item => {
+  const productCard = document.createElement('div');
+  productCard.classList.add('product-card');
+  productCard.innerHTML = `
+    <img src="${item.image}" alt="${item.name}">
+    <p>${item.name}</p>
+    <span>${item.price}</span>
+  `;
+  carousel.appendChild(productCard);
+});
+
+
+
+
+
+
+
 // ---------------------------- Footer Section-------------------------
 
 
